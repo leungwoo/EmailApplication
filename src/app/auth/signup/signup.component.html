@@ -16,4 +16,5 @@
   </div>
   {{ authForm.get("passwordConfirmation")?.errors | json }}
   <button class="ui submit button primary">Submit</button>
+  <div>Errors with formgroup:{{ authForm.errors | json }}</div>
 </form>
