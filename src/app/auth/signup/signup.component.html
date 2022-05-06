@@ -4,14 +4,20 @@
     <label>Username:</label>
     <input formControlName="username" />
   </div> -->
-  <app-input label="Username" [control]="authForm.get('username')"></app-input>
+  <app-input
+    label="Username"
+    [control]="$any(authForm.get('username'))"
+  ></app-input>
 
   {{ authForm.get("username")?.errors | json }}
   <!-- <div class="field">
     <label>Password:</label>
     <input formControlName="password" />
   </div> -->
-  <app-input label="password" [control]="authForm.get('password')"></app-input>
+  <app-input
+    label="password"
+    [control]="$any(authForm.get('password'))"
+  ></app-input>
 
   {{ authForm.get("password")?.errors | json }}
   <app-input></app-input>
