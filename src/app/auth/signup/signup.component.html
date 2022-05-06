@@ -6,27 +6,33 @@
   </div> -->
   <app-input
     label="Username"
+    inputType="text"
     [control]="$any(authForm.get('username'))"
   ></app-input>
 
-  {{ authForm.get("username")?.errors | json }}
+  <!-- {{ authForm.get("username")?.errors | json }} -->
   <!-- <div class="field">
     <label>Password:</label>
     <input formControlName="password" />
   </div> -->
   <app-input
     label="password"
+    inputType="password"
     [control]="$any(authForm.get('password'))"
   ></app-input>
 
-  {{ authForm.get("password")?.errors | json }}
-  <app-input></app-input>
-  <div class="field">
+  <!-- {{ authForm.get("password")?.errors | json }} -->
+  <app-input
+    label="passwordConfirmation"
+    inputType="password"
+    [control]="$any(authForm.get('passwordConfirmation'))"
+  ></app-input>
+  <!-- <div class="field">
     <label>Password Confirmation:</label>
     <input formControlName="passwordConfirmation" />
-  </div>
-  {{ authForm.get("passwordConfirmation")?.errors | json }}
-  <app-input></app-input>
+  </div> -->
+  <!-- {{ authForm.get("passwordConfirmation")?.errors | json }} -->
+
   <button class="ui submit button primary">Submit</button>
   <div>Errors with formgroup:{{ authForm.errors | json }}</div>
 </form>
