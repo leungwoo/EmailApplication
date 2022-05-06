@@ -41,5 +41,9 @@ export class SignupComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {}
+
+  showError() {
+    return this.authForm.dirty && this.matchPassword;
+  }
 }
 //added MatchPassword custom validator to contructor
