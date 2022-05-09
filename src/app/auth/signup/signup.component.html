@@ -1,37 +1,24 @@
 <h3>Create an Account</h3>
-<form class="ui-form" [formGroup]="authForm">
-  <!-- <div class="field">
-    <label>Username:</label>
-    <input formControlName="username" />
-  </div> -->
+<form (ngSubmit)="onSubmit()" class="ui-form" [formGroup]="authForm">
   <app-input
     label="Username:"
     inputType="text"
-    [control]="$any(authForm.get('username'))"
+    [control]="authForm.get('username')"
   ></app-input>
-
-  <!-- {{ authForm.get("username")?.errors | json }} -->
-  <!-- <div class="field">
-    <label>Password:</label>
-    <input formControlName="password" />
-  </div> -->
+  {{ authForm.get("username")?.errors | json }}
+  <hr />
   <app-input
     label="Password:"
     inputType="password"
-    [control]="$any(authForm.get('password'))"
+    [control]="authForm.get('password')"
+  ></app-input>
+  <hr />
+  <app-input
+    label="'Password Confirmation:"
+    inputType="password"
+    [control]="authForm.get('passwordConfirmation')"
   ></app-input>
 
-  <!-- {{ authForm.get("password")?.errors | json }} -->
-  <app-input
-    label="Password Confirmation:"
-    inputType="password"
-    [control]="$any(authForm.get('passwordConfirmation'))"
-  ></app-input>
-  <!-- <div class="field">
-    <label>Password Confirmation:</label>
-    <input formControlName="passwordConfirmation" />
-  </div> -->
-  <!-- {{ authForm.get("passwordConfirmation")?.errors | json }} -->
   <div
     *ngIf="
       authForm.get('password')?.touched &&
@@ -43,8 +30,14 @@
     <p *ngIf="authForm.errors?.['passwordDontMatch']">
       Passwords and Password Confirmation MUST match
     </p>
+    <p *ngIf="authForm.errors?.['noConnection']">No internet Connection</p>
   </div>
-  <div><button class="ui submit button primary">Submit</button></div>
+  <div>
+    <button class="ui submit button primary" [disabled]="authForm.invalid">
+      Submit
+    </button>
+  </div>
 
   <div>Errors with formgroup:{{ authForm.errors | json }}</div>
+  <div>formgroup values:{{ authForm.value | json }}</div>
 </form>
