@@ -2,7 +2,7 @@
   <div class="ui secondary pointing menu">
     <a routerLink="/" class="item">Angular Email</a>
     <div class="right menu">
-      <ng-container *ngIf="signedin">
+      <ng-container *ngIf="signedin$ | async">
         <a routerLink="/inbox" routerLinkActive="active" class="ui item">
           Inbox</a
         >
@@ -10,7 +10,7 @@
 
       <a routerLink="/signout" routerLinkActive="active" class="ui item"
         >Sign Out</a
-      ><ng-container *ngIf="!signedin">
+      ><ng-container *ngIf="!(signedin$ | async)">
         <a routerLink="/" routerLinkActive="active" class="ui item"> Sign In</a
         ><a routerLink="/signup" routerLinkActive="active" class="ui item"
           >Sign Up</a
@@ -20,3 +20,4 @@
   </div>
   <router-outlet></router-outlet>
 </div>
+<!--Also have to update the template *ngIf statement based on the async pipe or subcribe method-->
