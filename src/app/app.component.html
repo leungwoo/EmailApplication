@@ -6,12 +6,19 @@
         <a routerLink="/inbox" routerLinkActive="active" class="ui item">
           Inbox</a
         >
-      </ng-container>
 
-      <a routerLink="/signout" routerLinkActive="active" class="ui item"
-        >Sign Out</a
-      ><ng-container *ngIf="!(signedin$ | async)">
-        <a routerLink="/" routerLinkActive="active" class="ui item"> Sign In</a
+        <a routerLink="/signout" routerLinkActive="active" class="ui item"
+          >Sign Out</a
+        >
+      </ng-container>
+      <ng-container *ngIf="!(signedin$ | async)">
+        <a
+          routerLink="/"
+          routerLinkActive="active"
+          class="ui item"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          Sign In</a
         ><a routerLink="/signup" routerLinkActive="active" class="ui item"
           >Sign Up</a
         ></ng-container
