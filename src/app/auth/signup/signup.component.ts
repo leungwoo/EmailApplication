@@ -50,7 +50,7 @@ export class SignupComponent implements OnInit {
     }
 
     this.authService.signup(this.authForm.value).subscribe({
-      next: (response) => {
+      next: (res) => {
         //Navigate to some other route
         console.log('user successfully signed up');
       },

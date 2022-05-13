@@ -18,6 +18,9 @@ interface SignedinResponse {
   authenticated: boolean;
   username: string;
 }
+interface SignedOut {
+  authenticated: boolean;
+}
 @Injectable({
   providedIn: 'root',
 })
@@ -53,6 +56,15 @@ export class AuthService {
         })
       );
   }
+
+  signout() {
+    return this.http.post<SignedOut>(this.rootUrl + '/auth/signout', {}).pipe(
+      tap(() => {
+        this.signedin$.next(false);
+      })
+    );
+  }
 }
 
 //withCredentials:true .... saves the cookie to help  keep the user signed in info
+// used the interceptor to remove (withCredentials:true) from the http method arguments
