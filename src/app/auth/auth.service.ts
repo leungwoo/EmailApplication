@@ -21,6 +21,10 @@ interface SignedinResponse {
 interface SignedOut {
   authenticated: boolean;
 }
+interface SigninCredentials {
+  username: string;
+  password: string;
+}
 @Injectable({
   providedIn: 'root',
 })
@@ -64,7 +68,17 @@ export class AuthService {
       })
     );
   }
+
+  signin(credentials: SigninCredentials) {
+    return this.http.post(this.rootUrl + '/auth/signin', credentials).pipe(
+      tap(() => {
+        this.signedin$.next(true);
+      })
+    );
+  }
 }
 
 //withCredentials:true .... saves the cookie to help  keep the user signed in info
 // used the interceptor to remove (withCredentials:true) from the http method arguments
+
+//if an error happens in the form signingup or signing in it will skip the tap method and will not give the value 'true"
