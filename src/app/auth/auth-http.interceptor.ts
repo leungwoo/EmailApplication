@@ -15,7 +15,9 @@ export class AuthHttpInterceptor implements HttpInterceptor {
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    console.log(request);
-    return next.handle(request);
+    const modifiedReq = request.clone({ withCredentials: true }); // how to modify the request
+    return next.handle(modifiedReq);
   }
 }
+
+//interceptor not necessary for this small app but if i need to include a argument in a http request ill need it
