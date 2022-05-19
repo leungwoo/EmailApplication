@@ -11,3 +11,12 @@ content:'>';
 font-size: 20px;
 margin-right: 10px;
 }
+.content{
+    width:90%;
+}
+.trim{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width:100%;
+}
