@@ -1,0 +1,13 @@
+.actions:empty{
+    display:none;
+}
+
+.action-default{
+    display: none;
+}
+.actions:empty + .action-default{
+    display: block;
+}
+
+/* 
+If the user doesn't provide a modal Footer element show element with class = actions actions-default */
