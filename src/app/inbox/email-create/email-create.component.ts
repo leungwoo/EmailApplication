@@ -24,3 +24,4 @@ export class EmailCreateComponent implements OnInit {
   }
  
 }
+//created defualt fields to pass down to the child component (emailform)
