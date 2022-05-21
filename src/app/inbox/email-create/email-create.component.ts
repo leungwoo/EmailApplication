@@ -7,7 +7,7 @@ import { Email } from '../email';
   styleUrls: ['./email-create.component.css']
 })
 export class EmailCreateComponent implements OnInit {
-email:Email;
+  email:Email;
   showModal = false;
   constructor() { 
     this.email={
