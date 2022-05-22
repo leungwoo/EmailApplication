@@ -2,12 +2,13 @@
   <label>{{ label }}</label>
   <input [formControl]="control" [type]="inputType" />
   <div *ngIf="showErrors()" class="ui pointing red basic label">
-    <p *ngIf="control.errors?.['required']">Value is required</p>
+    <p *ngIf="control.errors.required">Value is required</p>
     <p *ngIf="control.hasError('minlength')">
       Value entered is
       {{control.errors?.['minlength'].actualLength}} characters long, but must
       be atleast {{control.errors?.['minlength'].requiredLength}}
     </p>
+    <p *ngIf="control.errors.email">Enter a valid email</p>
     <p *ngIf="control.hasError('maxlength')">
       Value entered is {{control.errors?.['maxlength'].actualLength}} characters
       long, but must not be more than
