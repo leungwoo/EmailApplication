@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Email } from '../email';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-email-create',
@@ -9,14 +10,14 @@ import { Email } from '../email';
 export class EmailCreateComponent implements OnInit {
   email:Email;
   showModal = false;
-  constructor() { 
+  constructor(private authService:AuthService) { 
     this.email={
       id:'',
       to:'',
       subject:'',
       html:'',
       text:'',
-      from:'test11011@angular-this.email.com'
+      from:`${this.authService.username}@angular-this.email.com`
     }
   }
 
@@ -24,4 +25,4 @@ export class EmailCreateComponent implements OnInit {
   }
  
 }
-//created defualt fields to pass down to the child component (emailform)
+//created default fields to pass down to the child component (emailform)

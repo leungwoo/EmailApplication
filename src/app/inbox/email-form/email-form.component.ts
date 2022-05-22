@@ -17,7 +17,7 @@ export class EmailFormComponent implements OnInit {
 
     this.emailForm = new FormGroup ({
       to: new FormControl(to,[Validators.required, Validators.email]),
-      from: new FormControl({value:from, disabled:true}),
+      from: new FormControl({value:from, disabled:true}), //disabled the field from user input
       subject: new FormControl(subject,[Validators.required]),
       text: new FormControl(text,[Validators.required])
     })
