@@ -23,6 +23,11 @@ export class EmailFormComponent implements OnInit {
     })
 
   }
-
+onSubmit(){
+  if (this.emailForm.invalid){
+    
+  }
+  console.log(this.emailForm.getRawValue())//getrawvalue helps to display the disabled "from: field"
+}
 }
 //gave the form control default values from the parent component by adding in the const parameters
