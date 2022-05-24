@@ -17,10 +17,14 @@ showModal=false;
   }
 
   ngOnInit() {
+    const text = this.email.text.replace(/\n/gi, '\n> '); //look for every new line across the entire string and replace it with etc
     this.email = {
      ... this.email, //spread operator in typescript
       from:this.email.to,
-      to:this.email.from
+      to:this.email.from,
+      subject: 'RE:' + this.email.subject,
+      text:
+      `\n\n\n----- ${this.email.from} wrote:\n>${text}`
 
     }
     
