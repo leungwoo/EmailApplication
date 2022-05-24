@@ -27,4 +27,5 @@ public rootUrl = 'https://api.angular-email.com';
   
     return this.http.post(this.rootUrl + '/emails', email);
   }
+  
 }

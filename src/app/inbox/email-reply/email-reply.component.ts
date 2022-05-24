@@ -1,22 +1,21 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Email } from '../email';
 import { EmailService } from '../email.service';
-import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-email-reply',
   templateUrl: './email-reply.component.html',
   styleUrls: ['./email-reply.component.css']
 })
-export class EmailReplyComponent implements OnInit {
+export class EmailReplyComponent {
  @Input() email:Email;
-showModal=false;
+ showModal=false;
 
-  constructor() { 
+  constructor(private emailService:EmailService) { 
     
   }
 
-  ngOnInit() {
+  ngOnChanges() {
     const text = this.email.text.replace(/\n/gi, '\n> '); //look for every new line across the entire string and replace it with etc
     this.email = {
      ... this.email, //spread operator in typescript
@@ -30,6 +29,6 @@ showModal=false;
     
   }
  onSubmit(email:Email){
-   
+   this.emailService.sendEmail(email).subscribe(()=>{this.showModal=false})
  }
 }
