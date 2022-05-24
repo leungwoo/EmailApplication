@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Email } from '../email';
 import { EmailService } from '../email.service';
 import { AuthService } from 'src/app/auth/auth.service';
@@ -9,25 +9,23 @@ import { AuthService } from 'src/app/auth/auth.service';
   styleUrls: ['./email-reply.component.css']
 })
 export class EmailReplyComponent implements OnInit {
-  email:Email;
+ @Input() email:Email;
 showModal=false;
 
-  constructor(private emailService:EmailService,
-    private authService:AuthService) { 
-    this.email={
-      id:'',
-      subject:'',
-      to:'',
-      from:`${authService.username}@angular-email.com`,
-      text:'',
-      html:''
-    }
-  }
-
-  ngOnInit(): void {
+  constructor() { 
     
   }
- onSubmit(){
+
+  ngOnInit() {
+    this.email = {
+     ... this.email, //spread operator in typescript
+      from:this.email.to,
+      to:this.email.from
+
+    }
+    
+  }
+ onSubmit(email:Email){
    
  }
 }
