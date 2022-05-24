@@ -33,7 +33,7 @@ export class SigninComponent implements OnInit {
     }
     this.authService.signin(this.authForm.value).subscribe({
       next: () => {
-        this.router.navigateByUrl('/inbox');
+        this.router.navigateByUrl('/inbox');// navigate to inbox link from signin 
       },
       error: ({ error }) => {
         if (error.username || error.password) {

@@ -11,8 +11,8 @@ const routes: Routes = [{
    children:[
     {path:'not-found',component:NotFoundComponent},
   {
-    path:':id',
-    component: EmailShowComponent,
+    path:':id', //wild card
+    component: EmailShowComponent, 
   resolve:{
     email:EmailResolverService
   }

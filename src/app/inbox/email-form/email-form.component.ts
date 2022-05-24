@@ -1,4 +1,4 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit,Input ,Output,EventEmitter} from '@angular/core';
 import { Email } from '../email';
 import { FormGroup,FormControl, Validators } from '@angular/forms';
 
@@ -8,8 +8,9 @@ import { FormGroup,FormControl, Validators } from '@angular/forms';
   styleUrls: ['./email-form.component.css']
 })
 export class EmailFormComponent implements OnInit {
-  emailForm:FormGroup
+  emailForm:FormGroup;
 @Input() email:Email;
+@Output() emailSubmit = new EventEmitter();
   constructor() { }
 
   ngOnInit(): void {
@@ -27,7 +28,9 @@ onSubmit(){
   if (this.emailForm.invalid){
     
   }
-  console.log(this.emailForm.getRawValue())//getrawvalue helps to display the disabled "from: field"
+  //console.log(this.emailForm.getRawValue())//getrawvalue helps to display the disabled "from: field"
+  this.emailSubmit.emit(this.emailForm.value);
 }
+
 }
 //gave the form control default values from the parent component by adding in the const parameters

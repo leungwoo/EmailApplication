@@ -4,7 +4,7 @@
 
   <input *ngIf="controlType === 'input'" [formControl]="control" [type]="inputType" />
 
-<textarea *ngIf="controlType === 'textarea'" [formContol]="control"></textarea>
+<textarea *ngIf="controlType === 'textarea'" [formControl]="control"></textarea>
 
   <div *ngIf="showErrors()" class="ui pointing red basic label">
     <p *ngIf="control.errors.required">Value is required</p>

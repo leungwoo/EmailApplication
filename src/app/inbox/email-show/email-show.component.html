@@ -1,4 +1,4 @@
-<div class="header" >
+ <div class="header" >
     <div >
         <h3>{{email.subject}}</h3>
         <div>
@@ -8,9 +8,12 @@
             To:<i>{{email.to}}</i>
         </div>
     </div>
+    <div class="replybutton">
+        <app-email-reply></app-email-reply>
+    </div>
 </div>
 <div class="ui divider" [innerHTML]="email.html">
 
 </div>
 
-
+ 
